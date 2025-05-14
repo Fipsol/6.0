@@ -28,6 +28,10 @@ class WrongMenuOption extends Exception {
 }
 class WrongStudentData extends Exception {
 }
+
+class DuplicateStudentException extends Exception {
+}
+
 class Main {
     public static Scanner scan = new Scanner(System.in);
 
@@ -58,6 +62,8 @@ class Main {
                 System.out.println("Błędny format daty! Użyj formatu DD-MM-YYYY");
             } catch (WrongMenuOption e) {
                 System.out.println("Błędny znak! Wybierz opcję z menu (0-3)");
+            } catch (DuplicateStudentException e) {
+                System.out.println("Student o podanym imieniu i dacie urodzenia już istnieje w bazie!");
             }
         }
     }
@@ -100,7 +106,7 @@ class Main {
         return age;
     }
 
-    public static void exercise1() throws IOException, WrongStudentName, WrongAge, WrongDateOfBirth {
+    public static void exercise1() throws IOException, WrongStudentName, WrongAge, WrongDateOfBirth, DuplicateStudentException {
         var name = ReadName();
         var age = ReadAge();
         scan.nextLine();

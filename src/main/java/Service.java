@@ -8,7 +8,14 @@ import java.io.IOException;
 
 public class Service {
 
-    public void addStudent(Student student) throws IOException {
+    public void addStudent(Student student) throws IOException, DuplicateStudentException {
+        var students = getStudents();
+        for (Student existing : students) {
+            if (existing.GetName().equals(student.GetName()) && 
+                existing.GetDate().equals(student.GetDate())) {
+                throw new DuplicateStudentException();
+            }
+        }
         var f = new FileWriter("db.txt", true);
         var b = new BufferedWriter(f);
         b.append(student.ToString());
