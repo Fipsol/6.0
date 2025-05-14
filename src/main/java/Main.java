@@ -23,6 +23,9 @@ class WrongAge extends Exception {
 
 class WrongDateOfBirth extends Exception {
 }
+
+class WrongMenuOption extends Exception {
+}
 class Main {
     public static Scanner scan = new Scanner(System.in);
 
@@ -51,20 +54,26 @@ class Main {
                 System.out.println("Błędny wiek!");
             } catch (WrongDateOfBirth e) {
                 System.out.println("Błędny format daty! Użyj formatu DD-MM-YYYY");
+            } catch (WrongMenuOption e) {
+                System.out.println("Błędny znak! Wybierz opcję z menu (0-3)");
             }
         }
     }
 
-    public static int menu() {
+    public static int menu() throws WrongMenuOption {
         System.out.println("1 - aby dodać studenta");
         System.out.println("2 - aby wypisać wszystkich studentów");
         System.out.println("3 - aby wyszukać studenta po imieniu");
         System.out.println("0 - aby wyjść z programu");
         try {
+            if(!scan.hasNextInt()) {
+                scan.next();
+                throw new WrongMenuOption();
+            }
             return scan.nextInt();
         } catch (InputMismatchException e) {
             scan.nextLine(); // clear scanner buffer
-            return -1;
+            throw new WrongMenuOption();
         }
     }
         public static String ReadName() throws WrongStudentName {
