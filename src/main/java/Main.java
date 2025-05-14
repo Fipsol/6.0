@@ -60,12 +60,6 @@ class Main {
          System.out.println("2 - aby wypisać wszystkich studentów");
             System.out.println("3 - aby wyszukać studenta po imieniu");
             System.out.println("0 - aby wyjść z programu");
-            try {
-                return scan.nextInt();
-            } catch (InputMismatchException e) {
-                scan.next(); // clear scanner buffer
-                return -1;
-            }
     }
         public static String ReadName() throws WrongStudentName {
         return scan.nextInt();
