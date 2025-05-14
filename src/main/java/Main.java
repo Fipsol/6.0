@@ -26,6 +26,8 @@ class WrongDateOfBirth extends Exception {
 
 class WrongMenuOption extends Exception {
 }
+class WrongStudentData extends Exception {
+}
 class Main {
     public static Scanner scan = new Scanner(System.in);
 
