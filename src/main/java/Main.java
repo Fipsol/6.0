@@ -67,11 +67,15 @@ class Main {
         System.out.println("0 - aby wyjść z programu");
         try {
             if(!scan.hasNextInt()) {
-                scan.next();
-                throw new WrongMenuOption();
+            scan.next();
+            throw new WrongMenuOption();
             }
-            return scan.nextInt();
-        } catch (InputMismatchException e) {
+            int choice = scan.nextInt();
+            if(choice < 0 || choice > 3) {
+            throw new WrongMenuOption();
+            }
+            return choice;
+            } catch (InputMismatchException e) {
             scan.nextLine(); // clear scanner buffer
             throw new WrongMenuOption();
         }
