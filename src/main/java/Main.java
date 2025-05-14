@@ -10,7 +10,7 @@ Poniższe zadania będą się sprowadzały do modyfikacji bazowego kodu. Proces 
 */
 
 
-class WrongDateOfBirth extends Exception { }
+
 
 //Commit6_1. Na podstawie analogii do wyjątku WrongStudentName utwórz i obsłuż wyjątki WrongAge oraz WrongDateOfBirth. 
 //Niepoprawny wiek – gdy jest mniejszy od 0 lub większy niż 100. Niepoprawna data urodzenia – gdy nie jest zapisana w formacie DD-MM-YYYY, np. 28-02-2023.
@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 class WrongStudentName extends Exception { }
 class WrongAge extends Exception { }
-
+class WrongDateOfBirth extends Exception { }
 class Main {
     public static Scanner scan = new Scanner(System.in);
 
