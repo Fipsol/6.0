@@ -14,7 +14,7 @@ Poniższe zadania będą się sprowadzały do modyfikacji bazowego kodu. Proces 
 
 import java.io.IOException;
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
 class WrongStudentName extends Exception {
 }
 
@@ -23,7 +23,6 @@ class WrongAge extends Exception {
 
 class WrongDateOfBirth extends Exception {
 }
-class InputMismatchException extends Exception{ }
 class Main {
     public static Scanner scan = new Scanner(System.in);
 
