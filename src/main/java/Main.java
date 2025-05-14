@@ -9,6 +9,9 @@ Poniższe zadania będą się sprowadzały do modyfikacji bazowego kodu. Proces 
 • W pętli głównej, w main’ie, w zdefiniowanym już try-catch dopisuje się Nazwę wyjątku i go obsługuje, np. wypisuje w konsoli co się stało.
 */
 
+
+class WrongDateOfBirth extends Exception { }
+
 //Commit6_1. Na podstawie analogii do wyjątku WrongStudentName utwórz i obsłuż wyjątki WrongAge oraz WrongDateOfBirth. 
 //Niepoprawny wiek – gdy jest mniejszy od 0 lub większy niż 100. Niepoprawna data urodzenia – gdy nie jest zapisana w formacie DD-MM-YYYY, np. 28-02-2023.
 
@@ -37,6 +40,8 @@ class Main {
                 System.out.println("Błędne imię studenta!");
             } catch(WrongAge e) {
                 System.out.println("Błędny wiek!");
+            } catch(WrongDateOfBirth e) {
+                System.out.println("Błędny format daty! Użyj formatu DD-MM-YYYY");
             }
         }
     }
@@ -68,12 +73,15 @@ class Main {
         return age;
     }
 
-    public static void exercise1() throws IOException, WrongStudentName, WrongAge {
+    public static void exercise1() throws IOException, WrongStudentName, WrongAge, WrongDateOfBirth {
         var name = ReadName();
         var age = ReadAge();
         scan.nextLine();
         System.out.println("Podaj datę urodzenia DD-MM-YYYY");
         var date = scan.nextLine();
+        if (!date.matches("\\d{2}-\\d{2}-\\d{4}")) {
+            throw new WrongDateOfBirth();
+        }
         (new Service()).addStudent(new Student(name, age, date));
     }
 
